@@ -1,6 +1,5 @@
 import { handleFileUpload } from '../utils/fileHandlers.js';
 import { showLoadingSpinner, hideLoadingSpinner, showNotification } from '../utils/ui.js';
-import { SUPPORTED_FILE_TYPES } from '../config/constants.js';
 import { navigate } from '../main.js';
 
 export function renderCreatePage(container) {

@@ -1,5 +1,3 @@
-import { processImageWithNovita } from './novitaApi.js';
-
 export async function handleFileUpload(file) {
     console.log('Starting file upload:', file);
     
@@ -13,37 +11,37 @@ export async function handleFileUpload(file) {
     formData.append('image', renamedFile);
 
     try {
-        // Start both requests in parallel
-        const [mindFileResponse, videoUrl] = await Promise.all([
-            // Mind file generation
-            fetch('https://nftmarkergenerator-production.up.railway.app/create-nft', {
-                method: 'POST',
-                body: formData
-            }),
-            // Novita video generation
-            processImageWithNovita(renamedFile)
-        ]);
+        const response = await fetch('https://nftmarkergenerator-production.up.railway.app/create-nft', {
+            method: 'POST',
+            body: formData
+        });
 
-        if (!mindFileResponse.ok) {
-            throw new Error(`Mind file generation failed: ${mindFileResponse.status}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Upload failed:', errorText);
+            throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
         }
 
-        const mindData = await mindFileResponse.json();
-        console.log('Received responses:', { mind: mindData, video: videoUrl });
+        const data = await response.json();
+        console.log('Received response:', data);
         
-        if (!mindData.url) {
-            throw new Error('No mind file URL received from server');
+        if (!data.success) {
+            throw new Error(data.message || 'Server processing failed');
+        }
+
+        if (!data.markerUrl || !data.videoUrl) {
+            throw new Error('Missing marker or video URL in server response');
         }
 
         // Create object URL for the uploaded image
         const imageUrl = URL.createObjectURL(renamedFile);
         
-        // Store all URLs in sessionStorage
-        sessionStorage.setItem('mindFileUrl', mindData.url);
+        // Store URLs in sessionStorage
+        sessionStorage.setItem('mindFileUrl', data.markerUrl);
         sessionStorage.setItem('targetImageUrl', imageUrl);
-        sessionStorage.setItem('videoUrl', videoUrl);
+        sessionStorage.setItem('videoUrl', data.videoUrl);
         
-        return { mindData, videoUrl };
+        return data;
     } catch (error) {
         console.error('Upload error:', error);
         throw new Error(error.message || 'Failed to process image');
