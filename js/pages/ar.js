@@ -18,7 +18,7 @@ export function renderARPage() {
     
     // Save current page state
     sessionStorage.setItem('lastPage', window.location.href);
-    // Navigate to AR page with relative path
-    window.location.href = 'ar.html'; // Remove the leading slash
+    // Use absolute path for AR page
+    window.location.href = '/ar.html';
     hideLoadingSpinner();
 }
