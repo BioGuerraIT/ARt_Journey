@@ -20,10 +20,15 @@ jobs:
       - name: Install dependencies
         run: npm install
         
+      - name: Build
+        run: npm run build
+        env:
+          VITE_NOVITA_API_KEY: ${{ secrets.NOVITA_API_KEY }}
+        
       - name: Install Surge
         run: npm install -g surge
         
       - name: Deploy to Surge
-        run: surge ./ artjourney.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge dist artjourney.surge.sh --token ${{ secrets.SURGE_TOKEN }}
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }} 

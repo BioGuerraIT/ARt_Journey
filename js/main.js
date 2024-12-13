@@ -2,9 +2,6 @@ import { renderGalleryPage } from './pages/gallery.js';
 import { renderCreatePage } from './pages/create.js';
 import { renderARPage } from './pages/ar.js';
 
-const app = document.querySelector('#app');
-const navButtons = document.querySelectorAll('.nav-btn');
-
 // Sample images data (in a real app, this would come from an API)
 export const images = [
     { id: 1, url: 'https://picsum.photos/500/300?random=1', title: 'Image 1' },
@@ -17,10 +14,14 @@ export const images = [
 
 // Router function
 export function navigate(page) {
+    console.log('Navigating to:', page);
+    const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.page === page);
     });
 
+    const app = document.querySelector('#app');
+    
     switch (page) {
         case 'gallery':
             renderGalleryPage(app);
@@ -36,10 +37,19 @@ export function navigate(page) {
     }
 }
 
-// Event listeners for navigation
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => navigate(btn.dataset.page));
-});
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    const app = document.querySelector('#app');
+    if (!app) {
+        console.error('App container not found');
+        return;
+    }
 
-// Initial render
-navigate('gallery');
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => navigate(btn.dataset.page));
+    });
+
+    // Initial render
+    navigate('gallery');
+});
