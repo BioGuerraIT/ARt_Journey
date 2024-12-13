@@ -1,9 +1,6 @@
 import { images, navigate } from '../main.js';
 
 export function renderGalleryPage(container) {
-    // Add console.log to debug
-    console.log('Rendering gallery with images:', images);
-    
     container.innerHTML = `
         <header class="header">
             <div class="header-content">
@@ -17,7 +14,6 @@ export function renderGalleryPage(container) {
             ${images.map(image => `
                 <div class="image-card" data-id="${image.id}">
                     <img src="${image.imageUrl}" alt="${image.name}" loading="lazy">
-                    <div class="image-title">${image.name}</div>
                 </div>
             `).join('')}
         </div>

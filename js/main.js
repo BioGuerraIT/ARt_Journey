@@ -1,36 +1,50 @@
+import { renderGalleryPage } from './pages/gallery.js';
+import { renderCreatePage } from './pages/create.js';
+import { renderARPage } from './pages/ar.js';
+
 // Import art data
 import artData from '../art_data.json';
 
 // Export the art items for use in other modules
 export const images = artData.items;
 
-// Navigation function
 export function navigate(page) {
-    window.location.href = page === 'ar' ? 'ar.html' : `#${page}`;
-}
+    console.log('Navigating to:', page);
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === page);
+    });
 
-// Router function
-function router() {
-    const container = document.getElementById('app');
-    const hash = window.location.hash || '#gallery';
-
-    // Import and render the appropriate page
-    switch (hash) {
-        case '#gallery':
-            import('./pages/gallery.js').then(module => {
-                module.renderGalleryPage(container);
-            });
+    const app = document.querySelector('#app');
+    
+    switch (page) {
+        case 'gallery':
+            renderGalleryPage(app);
             break;
-        case '#create':
-            import('./pages/create.js').then(module => {
-                module.renderCreatePage(container);
-            });
+        case 'create':
+            renderCreatePage(app);
+            break;
+        case 'ar':
+            renderARPage();
             break;
         default:
-            navigate('gallery');
+            renderGalleryPage(app);
     }
 }
 
-// Initialize router
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    const app = document.querySelector('#app');
+    if (!app) {
+        console.error('App container not found');
+        return;
+    }
+
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => navigate(btn.dataset.page));
+    });
+
+    // Initial render
+    navigate('gallery');
+});
