@@ -1,0 +1,315 @@
+:root {
+    --ferrari-red: #FF2800;
+    --dark-bg: #121212;
+    --dark-surface: #1e1e1e;
+    --dark-surface-2: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --header-height: 64px;
+    --nav-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding-bottom: var(--nav-height);
+}
+
+/* Header Styles */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: var(--dark-bg);
+    padding: 1rem;
+    z-index: 10;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--dark-surface-2);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ferrari-red);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Pinterest-style Grid */
+.image-grid {
+    columns: 6 220px;
+    column-gap: 16px;
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 1500px;
+}
+
+.image-card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+}
+
+.image-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.image-card:hover::after {
+    opacity: 1;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Create Page Mobile Optimizations */
+.create-page {
+    min-height: calc(100vh - var(--header-height) - var(--nav-height));
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-bg);
+}
+
+.upload-container {
+    width: 100%;
+    max-width: 400px;
+    background: var(--dark-surface);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+}
+
+.upload-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.upload-area {
+    border: 2px dashed var(--dark-surface-2);
+    border-radius: var(--radius-md);
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--dark-surface);
+}
+
+.upload-area:hover {
+    border-color: var(--ferrari-red);
+}
+
+.upload-area i {
+    font-size: 2.5rem;
+    color: var(--ferrari-red);
+    margin-bottom: 1rem;
+}
+
+.upload-area p {
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+}
+
+.upload-area .small {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+#fileInput {
+    display: none;
+}
+
+.btn {
+    background: var(--ferrari-red);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--dark-surface);
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--dark-surface-2);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nav-btn.active {
+    color: var(--ferrari-red);
+}
+
+.nav-btn i {
+    font-size: 1.25rem;
+}
+
+.nav-btn span {
+    font-size: 0.75rem;
+}
+
+/* Back Button for AR Page */
+.back-button {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+    background: var(--dark-surface);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--dark-surface-2);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--dark-surface);
+    border-top-color: var(--ferrari-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    bottom: calc(var(--nav-height) + 16px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    background: var(--dark-surface);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+.notification.error {
+    background: #dc2626;
+}
+
+.notification.success {
+    background: #059669;
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 100%); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        columns: 2 160px;
+        padding: 8px;
+        column-gap: 8px;
+    }
+
+    .image-card {
+        margin-bottom: 8px;
+    }
+
+    .create-page {
+        padding: 1rem;
+    }
+
+    .upload-container {
+        padding: 1.5rem;
+    }
+}
+
+.image-preview {
+    margin: 1rem 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
