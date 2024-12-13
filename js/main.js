@@ -1,55 +1,36 @@
-import { renderGalleryPage } from './pages/gallery.js';
-import { renderCreatePage } from './pages/create.js';
-import { renderARPage } from './pages/ar.js';
+// Import art data
+import artData from '../art_data.json';
 
-// Sample images data (in a real app, this would come from an API)
-export const images = [
-    { id: 1, url: 'https://picsum.photos/500/300?random=1', title: 'Image 1' },
-    { id: 2, url: 'https://picsum.photos/500/300?random=2', title: 'Image 2' },
-    { id: 3, url: 'https://picsum.photos/500/300?random=3', title: 'Image 3' },
-    { id: 4, url: 'https://picsum.photos/500/300?random=4', title: 'Image 4' },
-    { id: 5, url: 'https://picsum.photos/500/300?random=5', title: 'Image 5' },
-    { id: 6, url: 'https://picsum.photos/500/300?random=6', title: 'Image 6' },
-];
+// Export the art items for use in other modules
+export const images = artData.items;
+
+// Navigation function
+export function navigate(page) {
+    window.location.href = page === 'ar' ? 'ar.html' : `#${page}`;
+}
 
 // Router function
-export function navigate(page) {
-    console.log('Navigating to:', page);
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.page === page);
-    });
+function router() {
+    const container = document.getElementById('app');
+    const hash = window.location.hash || '#gallery';
 
-    const app = document.querySelector('#app');
-    
-    switch (page) {
-        case 'gallery':
-            renderGalleryPage(app);
+    // Import and render the appropriate page
+    switch (hash) {
+        case '#gallery':
+            import('./pages/gallery.js').then(module => {
+                module.renderGalleryPage(container);
+            });
             break;
-        case 'create':
-            renderCreatePage(app);
-            break;
-        case 'ar':
-            renderARPage();
+        case '#create':
+            import('./pages/create.js').then(module => {
+                module.renderCreatePage(container);
+            });
             break;
         default:
-            renderGalleryPage(app);
+            navigate('gallery');
     }
 }
 
-// Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
-    const app = document.querySelector('#app');
-    if (!app) {
-        console.error('App container not found');
-        return;
-    }
-
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => {
-        btn.addEventListener('click', () => navigate(btn.dataset.page));
-    });
-
-    // Initial render
-    navigate('gallery');
-});
+// Initialize router
+window.addEventListener('hashchange', router);
+window.addEventListener('load', router);

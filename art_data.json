@@ -1,0 +1,79 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "Street Art 1",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/art_street_1.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734072710031.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734072773970.mp4"
+    },
+    {
+      "id": "2",
+      "name": "Street Art 2",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_2.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734072792813.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734072844498.mp4"
+    },
+    {
+      "id": "3",
+      "name": "Street Art 3",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_3.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734072862535.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734072975763.mp4"
+    },
+    {
+      "id": "4",
+      "name": "Street Art 4",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_4.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734072985831.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073041540.mp4"
+    },
+    {
+      "id": "5",
+      "name": "Street Art 5",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_5.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073060550.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073124267.mp4"
+    },
+    {
+      "id": "6",
+      "name": "Street Art 6",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_6.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073145464.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073201063.mp4"
+    },
+    {
+      "id": "7",
+      "name": "Street Art 7",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_7.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073212057.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073267729.mp4"
+    },
+    {
+      "id": "8",
+      "name": "Street Art 8",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_8.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073279761.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073335524.mp4"
+    },
+    {
+      "id": "9",
+      "name": "Street Art 9",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_9.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073352074.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073415821.mp4"
+    },
+    {
+      "id": "10",
+      "name": "Street Art 10",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_10.jpeg"
+    },
+    {
+      "id": "11",
+      "name": "Street Art 11",
+      "imageUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/street_art_11.jpg",
+      "markerUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/target_1734073438784.mind",
+      "videoUrl": "https://nft-marker-files-artjourney.s3.us-east-2.amazonaws.com/video_1734073494630.mp4"
+    }
+  ]
+} 
