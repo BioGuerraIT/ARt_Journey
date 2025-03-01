@@ -1,6 +1,7 @@
 import { renderGalleryPage } from './pages/gallery.js';
 import { renderCreatePage } from './pages/create.js';
 import { renderARPage } from './pages/ar.js';
+import { renderTutorialPage } from './pages/tutorial.js';
 
 // Import art data
 import artData from '../art_data.json';
@@ -23,6 +24,9 @@ export function navigate(page) {
             break;
         case 'create':
             renderCreatePage(app);
+            break;
+        case 'tutorial':
+            renderTutorialPage(app);
             break;
         case 'ar':
             renderARPage();
